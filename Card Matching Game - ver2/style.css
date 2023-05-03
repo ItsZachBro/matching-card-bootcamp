@@ -1,0 +1,84 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #c7f6fd;
+  }
+  
+  .container {
+    position: relative;
+  }
+  
+  .game-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 0.5rem;
+    max-width: 80vw;
+    padding: 0.5rem;
+  }
+  
+  
+  h1 {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 0.5rem 1rem;
+    border-radius: 0.3rem;
+  }  
+
+    .card {
+        width: 10rem;
+        height: 14rem;
+        background-color: #fff;
+        border: 0.1rem solid #ccc;
+        border-radius: 0.3rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('mtg\ back.webp');
+        background-size: cover;
+        background-position: center;
+        z-index: 1;
+        transition: opacity 0.5s;
+    }
+
+    .card img {
+        position: absolute;
+        width: 90%;
+        height: 90%;
+        opacity: 0;
+        transition: opacity 0.5s;
+        z-index: 2;
+    }
+
+    .card.flip img {
+        opacity: 1;
+    }
+
+    .card.flip::before {
+        opacity: 0;
+    }
+
+    .card.matched {
+        background-color: #ccc;
+        cursor: default;
+    }
