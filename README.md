@@ -1,4 +1,4 @@
-# ♠️ Week08 Bootcamp2019a Project: Matching Card Game
+# ♠️ Matching Card Game
 
 I made a 12 card matching game because, 12 is lucky :)
 All jokes aside, 12 was more fun and looked better than 10.
