@@ -1,84 +1,173 @@
 body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
-    background-color: #c7f6fd;
-  }
+  font-family: 'Aoboshi One', serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  /*margin: 0;*/
+  background-color: #c7f6fd;
+  background-image: url('magic the gathering wallpaper.png');
+}
+
+.container {
+  position: relative;
+  width: 100%;
   
-  .container {
-    position: relative;
-  }
-  
+}
+
+.game-container {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+  grid-gap: 1rem;
+  grid-column-gap: 1.5rem;  
+  max-width: 80vw;
+  min-width: 40vw;  /* minimum width */
+  min-height: 40vh; /* minimum height */
+  /*margin: auto;*/ 
+ 
+}
+
+@media (orientation: landscape) {
   .game-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    grid-gap: 0.5rem;
-    max-width: 80vw;
-    padding: 0.5rem;
+    grid-template-columns: repeat(4, minmax(150px, 1fr));
   }
-  
-  
-  h1 {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 3;
-    background-color: rgba(255, 255, 255, 0.7);
-    padding: 0.5rem 1rem;
-    border-radius: 0.3rem;
-  }  
+}
 
-    .card {
-        width: 10rem;
-        height: 14rem;
-        background-color: #fff;
-        border: 0.1rem solid #ccc;
-        border-radius: 0.3rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        position: relative;
-        overflow: hidden;
-    }
+@media (orientation: portrait) {
+  .game-container {
+    grid-template-columns: repeat(3, minmax(150px, 1fr));
+  }
+}
 
-    .card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: url('mtg\ back.webp');
-        background-size: cover;
-        background-position: center;
-        z-index: 1;
-        transition: opacity 0.5s;
-    }
+@media (max-width: 1024px) {
+  .game-container {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+}
 
-    .card img {
-        position: absolute;
-        width: 90%;
-        height: 90%;
-        opacity: 0;
-        transition: opacity 0.5s;
-        z-index: 2;
-    }
+@media (max-width: 414px) {
+  .game-container {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  }
+}
 
-    .card.flip img {
-        opacity: 1;
-    }
+h1 {
+  font-size: 3rem;
+  position: relative;
+  width: 100%;
+  text-align: center;
+  z-index: 3;
+  color: rgb(87, 0, 87);
+  text-shadow: -0.0625rem 0 rgb(255, 255, 255), 0 0.0625rem rgb(255, 255, 255), 0.0625rem 0 rgb(255, 255, 255), 0 -0.0625rem rgb(255, 255, 255);
+  padding: 0.125rem .5rem;
+}
 
-    .card.flip::before {
-        opacity: 0;
-    }
+button {
+  font-family: 'Aoboshi One', serif;
+  border-radius: 5%;
+  margin-top: 1%;
+  background-color: rgb(87, 0, 87);
+  color: rgb(255, 255, 255);
+  font-size: 1.5rem;
+  transition: background-color 0.3s;
+}
 
-    .card.matched {
-        background-color: #ccc;
-        cursor: default;
-    }
+button:hover {
+  background-color: rgb(120, 0, 120);
+}
+
+button:active {
+  background-color: rgb(60, 0, 60);
+}
+
+
+.card {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 13/18.2;
+  background-color: #000000;
+  border: 0.0rem solid #ccc;
+  border-radius: 0.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('mtg\ back.webp');
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+  transition: opacity 0.5s;
+}
+
+.card img {
+  position: absolute;
+  width: 95%;
+  height: 95%;
+  opacity: 0;
+  transition: opacity 0.5s;
+  z-index: 2;
+}
+
+.card.flip img {
+  opacity: 1;
+}
+
+.card.flip::before {
+  opacity: 0;
+}
+
+.card.matched {
+  background-image: url('sparkle backdrop.gif');
+  border-radius: 0.8rem;
+  cursor: default;
+}
+
+@keyframes flash {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.1;
+  }
+}
+
+.message-container .flash-text {
+  animation: flash 1s ease-in-out infinite;
+  font-size: 2em;
+  color: rgb(187, 4, 187);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+@media (max-width: 1024px) {
+  .game-container {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+}
+
+@media (max-width: 414px) {
+  .game-container {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  }
+}
